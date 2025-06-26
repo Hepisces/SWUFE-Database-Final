@@ -1,0 +1,66 @@
+\begin{CJK*}{UTF8}{song}
+\begin{enumerate}
+    \item 数据库与环境管理
+    
+    此类命令负责数据库的生命周期、数据导入以及环境配置。
+    \begin{table}[H]
+    \centering
+    \caption{数据库与环境管理命令}
+    \vspace{2mm}
+    \small
+    \begin{tabular}{p{2cm}p{2cm}p{3cm}}
+    \toprule
+    \textbf{命令 / 子命令} & \textbf{参数} & \textbf{描述} \\
+    \hline
+    \texttt{import-data} & \texttt{--dir <PATH>} & 导入数据并创建数据库，基于指定目录的 \texttt{DDL.sql} 和 \texttt{.sql} 文件。 \\
+    \texttt{reset-db} & \texttt{--user <TEXT>} & 重置数据库（需管理员权限），删除指定数据库文件。\\
+    \texttt{config set-ddl-path} & \texttt{PATH} & 设置 \texttt{DDL.sql} 文件路径，供 Text-to-SQL 功能解析表结构用。 \\
+    \texttt{config set-model-path} & \texttt{PATH} & 设置本地 HuggingFace 模型路径，驱动 Text-to-SQL 功能。 \\
+    \texttt{config show} & [无] & 显示当前配置，包括模型路径和 DDL 文件路径。 \\
+    \bottomrule
+    \end{tabular}
+    \label{tab1}
+    \end{table}
+
+    \item 查询、分析与验证
+    
+    此类命令是系统的核心功能，用于执行查询、进行AI辅助分析以及保障查询安全。
+    \begin{table}[H]
+    \centering
+    \caption{查询、分析与验证命令}
+    \vspace{2mm}
+    \small
+    \begin{tabular}{lp{2cm}p{3cm}}
+    \toprule
+    \textbf{命令 / 子命令} & \textbf{参数} & \textbf{描述} \\
+    \hline
+    \texttt{run} & \texttt{QUERY} (必需) \newline \texttt{--db-name <TEXT>} & 执行SQL查询并可视化结果，包括查询计划和交互式图表。 \\
+    \texttt{ask} & \texttt{QUESTION} (必需) & 将自然语言问题转换为SQL查询，并进行安全检查。 \\
+    \texttt{check} & \texttt{QUERY} (必需) \newline \texttt{--db-name <TEXT>} & 检查SQL查询的合法性，检测危险操作和语法错误。 \\
+    \texttt{tables} & \texttt{--db-name <TEXT>} & 列出指定数据库中的所有表名称。 \\
+    \bottomrule
+    \end{tabular}
+    \label{tab2}
+    \end{table}
+
+    \item 可视化与导出
+    
+    此类命令专注于数据的可视化呈现和导出。
+    \begin{table}[H]
+    \centering
+    \caption{可视化与导出命令}
+    \vspace{2mm}
+    \small
+    \begin{tabular}{p{2cm}p{2cm}p{3cm}}
+    \toprule
+    \textbf{命令 / 子命令} & \textbf{参数} & \textbf{描述} \\
+    \hline
+    \texttt{er} & \texttt{--dir <PATH>} \newline \texttt{--output <PATH>} & 生成基于 \texttt{DDL.sql} 的 Mermaid.js E-R 图，输出为 HTML 文件。 \\
+    (\texttt{run} 命令的一部分) & (交互式) & 启动交互式图表生成器，允许用户选择图表类型和数据列。 \\
+    \bottomrule
+    \end{tabular}
+    \label{tab3}
+    \end{table}
+
+\end{enumerate}
+\end{CJK*}

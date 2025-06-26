@@ -1,0 +1,11 @@
+\begin{CJK*}{UTF8}{song}
+
+系统各模块并非孤立存在，而是通过清晰定义的流程和共享的配置进行协作。我们分别展示核心工作流和执行先决条件，以说明系统的工作流程。
+
+核心工作流的命令形式可以展示为$\text{ask} \rightarrow \text{check} \rightarrow \text{run} \rightarrow \text{visualize}$，自然语言查询 (ask) 是起点，其输出（SQL字符串）成为 checker 模块的输入checker.is\_query\_safe() 对SQL进行验证。这一步使用正则表达式和sql-metadata库来禁止如 DROP, DELETE 等危险操作，并检查查询的表和列是否存在于数据库模式中，只有通过检查的SQL才能进入 run 流程，由 db.execute\_query() 执行。当然也可以跳过ask和check命令，直接执行run命令，同样可以在通过检查后执行查询。执行后产生的数据（plan\_df, result\_df）被 visualizer 模块获取并在与用户交互后完成最终的呈现。
+
+
+ ask, run, er (生成E-R图) 和 check 命令的执行都以一个已初始化的数据库为前提。CLI层在执行这些命令前会检查数据库文件是否存在，若不存在则会中止操作并提示用户先对数据库进行初始化, ask 命令同时依赖 awesql\_config.json 文件来定位 DDL.sql 文件和本地模型路径，er命令则依赖DDL.sql的定位。
+ 
+
+\end{CJK*}

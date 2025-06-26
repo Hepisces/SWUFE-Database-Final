@@ -1,0 +1,7 @@
+\begin{CJK*}{UTF8}{song}
+
+该模块可以将用户的自然语言问题转化为可执行的SQL查询。用户执行 \textit{awesql ask "..."} 时，Text2SQL.get\_schema\_representation() 函数将读取配置文件中记录的 DDL.sql 路径，解析文件内容，并提取所有 CREATE TABLE 语句作为数据库关系模式，用以辅助LLM理解表结构、各个属性的数据类型、是否为主键，外键等。然后，将用户的问题赋值给query变量，关系模式赋值给schema变量，即可以通过填充预定义好的prompt直接输入LLM。此处的LLM为本地部署的sqlcoder-7B，其通过huggingface开源。
+
+最后，LLM将按照prompt模板返回LLM返回包含SQL查询的文本。系统提取出其中的SQL代码块，作为最终的生成结果。此SQL语句随后可以被传递给SQL执行与可视化模块。
+
+\end{CJK*}

@@ -1,0 +1,9 @@
+\begin{CJK*}{UTF8}{song}
+
+此模块负责执行SQL查询并以多种形式呈现其过程与结果。无论是用户直接通过 run命令输入的SQL，还是由 ask命令生成的SQL，都可以被传递到 db.execute\_query() 函数。此函数对输入SQL执行两个操作：1）通过\textit{EXPLAIN QUERY PLAN SQL}: 获取数据库引擎为该查询制定的执行计划；2）通过SQL: 执行查询本身，获取结果数据集。
+
+这两个操作的结果分别被读入两个独立的pandas DataFrame：plan\_df 和 result\_df。其中 plan\_df 被传递给visualizer.draw\_query\_plan ()。该函数将plan\_df重建为树状结构，并匹配预设的解释文案，最后利用 rich 库在控制台渲染出带注释的彩色执行计划树。result\_df 则被用于两种可视化：1）visualizer .print\_results\_table() ，将结果的前10行渲染成一个格式化的控制台表格，供用户快速预览和精确读数。2）visualizer.visualize\_query\_result() ，启动一个交互式会话，引导用户从查询结果的列中选择用于图表 x 轴、y 轴和分类（hue）的数据。根据用户的选择和指定的图表类型（如柱状图、折线图），系统利用 matplotlib 和 seaborn 库生成图表，并将其保存为图像文件，同时自动尝试打开该文件。
+
+为了避免潜在风险，系统会通过正则话自动检测输入的SQL查询，并只允许SELECT查询通过，其他所有与修改和删除相关的命令将被自动禁止并返回警告。
+
+\end{CJK*}

@@ -1,0 +1,7 @@
+\begin{CJK*}{UTF8}{song}
+
+此模块用于恢复到初始状态。当用户执行 \textit{awesql reset} 命令，可附带 \textit{--db} 或 \textit{--config} 参数。若指定 \textit{--db}，系统调用 db.reset\_db()，该函数通过 os.remove() 直接删除数据库文件；若指定 \textit{--config}，系统调用 db.reset\_config()，删除 awesql\_ config.json 配置文件。若无任何参数附加，则默认同时执行上述两个操作。
+
+由于这个操作的破坏性，在CLI层面，执行此命令前会要求用户输入管理员帐号和密码，以防止误操作导致数据丢失。
+
+\end{CJK*}

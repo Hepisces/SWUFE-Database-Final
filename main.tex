@@ -1,0 +1,226 @@
+\documentclass[10.5pt,compsoc,twocolumn]{CjC} % 添加 twocolumn 以模拟双栏布局
+\usepackage{CJKutf8}
+\usepackage{CJK}
+
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage[noadjust]{cite}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{ccaption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{xcolor,stfloats}
+\usepackage{comment}
+\setcounter{page}{1}
+\usepackage{cuted}%flushend,
+\usepackage{captionhack}
+\usepackage{epstopdf}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{xeCJK}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{CJKutf8}
+
+\usepackage{tabularx}
+
+
+
+\usepackage{caption}
+
+
+\usepackage{float} % 用于 [H] 强制定位
+% 定义代码风格
+
+\usepackage{longtable}
+
+%\usepackage{ccmap}
+%\CJKtilde
+%\usepackage{CJKpunct} 
+%\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+
+%===============================%
+
+% \firstfootname{ \quad \quad }
+\headevenname{\mbox{\quad} \hfill  \mbox{\zihao{-5}{\begin{CJK*}{UTF8}{song}数据库原理与应用\end{CJK*}} \hspace {50mm} \mbox{\begin{CJK*}{UTF8}{song}2026 年\end{CJK*}}}}%
+\headoddname{\begin{CJK*}{UTF8}{song}\hfill
+Awesql:一种集成自然语言查询与SQL智能校验的数据库命令行工具\end{CJK*}}%
+
+%footnote use of *
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+
+\newtheoremstyle{mystyle}{0pt}{0pt}{\normalfont}{1em}{\bf}{}{1em}{}
+\theoremstyle{mystyle}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\abc}{\color{white}\vrule width 2pt}
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
+\makeatother
+\setlength\parindent{2em}
+% \renewcommand{\hth}{\begin{CJK*}{UTF8}{zhhei}}
+% \renewcommand{\htss}{\begin{CJK*}{UTF8}{song}}
+
+\input{zhwinfonts}
+
+\hyphenpenalty=50000
+\makeatletter
+\newcommand\mysmall{\@setfontsize\mysmall{7}{9.5}}
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+
+\let\temp\footnote
+\renewcommand \footnote[1]{\temp{\zihao{-5}#1}}
+
+
+\thispagestyle{plain}%
+\thispagestyle{empty}%
+\pagestyle{CjCheadings}
+
+\begin{document}
+\begin{table*}[!t]
+\vspace {-13mm}
+\begin{tabular}{p{168mm}}
+\zihao{5-}\begin{CJK*}{UTF8}{song}
+2025年6月 \hfill数据库原理与应用\end{CJK*}\\
+\hline\\[-4.5mm]
+\hline\end{tabular}
+
+\centering
+\vspace {11mm}
+\begin{CJK*}{UTF8}{zhhei}
+{\zihao{2}Awesql:一种集成自然语言查询与SQL智能校验的数据库命令行工具}
+\end{CJK*}
+\vskip 5mm
+
+{\zihao{3}\begin{CJK*}{UTF8}{fs}
+和嘉炜\quad  韩璐帆 \quad 鄢怡然\end{CJK*}}
+
+\vspace {5mm}
+\zihao{6}{\begin{CJK*}{UTF8}{song}
+西南财经大学\quad统计与数据科学学院\quad数据科学与大数据技术
+\end{CJK*}}
+
+\vskip 5mm
+{\centering
+\begin{tabular}{p{160mm}}
+\zihao{5-}{
+\setlength{\baselineskip}{16pt}\selectfont{
+\noindent\begin{CJK*}{UTF8}{zhhei}摘\quad 要\quad \end{CJK*} \begin{CJK*}{UTF8}{song}
+本文设计并实现了一个基于现代命令行交互框架的数据库命令行工具，结合数据库管理技术与自然语言处理方法，旨在提升数据库操作的便捷性与智能化水平。系统围绕数据库初始化与关系模式录入、SQL语句智能检查、自然语言查询以及查询流程与结果可视化四大核心功能模块展开。用户可通过命令行快速完成数据库的创建、表结构定义及数据录入，并可重置数据库结构与数据。系统内置SQL语法分析与异常捕捉机制，能够实时识别并反馈查询语句中的语法或逻辑错误，并提供友好的中文报错与修正建议。此外，系统集成Text2SQL转译功能，实现自然语言到SQL语句的自动转换，降低非专业用户的使用门槛。针对复杂查询，系统提供查询执行流程可视化功能，直观展示数据流动路径，同时配备多种图形化结果展示形式，提升数据分析与解读效率。实验表明，该系统具备良好的交互性、扩展性与实用价值，适用于多种轻量级数据管理场景。我们的工具开源在 \url{https://github.com/Hepisces/db_final}。
+
+\end{CJK*}\par}}\\[2mm]
+
+\zihao{5-}{\noindent
+\begin{CJK*}{UTF8}{zhhei}关键词\end{CJK*} \quad \begin{CJK*}{UTF8}{song}{数据库命令行工具；SQL语句检查；Text2SQL；自然语言查询；数据可视化}
+\end{CJK*}
+}\\[2mm]
+\vskip 7mm
+
+\end{tabular}}
+\begin{center}
+\zihao{3}{ {\begin{CJK*}{UTF8}{zhhei}Awesql: A Database Command Line Tool Integrating Natural Language Querying and SQL Intelligent Checking\end{CJK*}}}\\
+\vspace {5mm}
+\zihao{5}{ {\begin{CJK*}{UTF8}{zhhei}Jiawei He Lufan Han Yiran Yan \end{CJK*}
+}}\\
+\vspace {2mm}
+\zihao{6}{\begin{CJK*}{UTF8}{zhhei}{Southwestern University of Finance and Economics\quad School of Statistics and Data Science\quad Data Science and Big Data Technology }\end{CJK*}}
+
+\end{center}
+\begin{tabular}{p{160mm}}
+\zihao{5}{
+\setlength{\baselineskip}{18pt}\selectfont{
+{\bf Abstract}\quad \par}}\setlength{\baselineskip}{18pt}\selectfont{\zihao{5}{\noindent This paper designs and implements a database command line tool based on a modern command line interaction framework, which combines database management techniques and natural language processing methods, aiming to improve the convenience and intelligence of database operation. The system revolves around four core functional modules: database initialization and relational schema entry, SQL statement intelligent checking, natural language query, and query process and result visualization. Users can quickly complete database creation, table structure definition and data entry through the command line, and can reset the database structure and data. The system has a built-in SQL syntax analysis and anomaly capture mechanism, which can identify and feedback syntax or logic errors in query statements in real time, and provide friendly Chinese error reporting and correction suggestions. In addition, the system integrates Text2SQL translation function, which realizes automatic conversion from natural language to SQL statement and reduces the threshold for non-professional users. For complex queries, the system provides query execution process visualization function, which intuitively displays the data flow path, and is equipped with multiple graphical results display forms to enhance the efficiency of data analysis and interpretation. Experiments show that the system has good interactivity, scalability and practical value, and is suitable for a variety of lightweight data management scenarios. Our tools are open source at \url{https://github.com/Hepisces/db_final}.
+
+\vspace {5mm}
+{\bf Keywords}\quad \begin{CJK*}{UTF8}{zhhei}
+{Database Command Line Tools; SQL Statement Checking; Text2SQL; Natural Language Queries; Data Visualization}
+\end{CJK*}}\par}
+\end{tabular}
+\end{table*}
+\vskip -3mm
+\clearpage
+
+{\begin{CJK*}{UTF8}{zhhei}\zihao{5}\vskip 1mm\section{引言}\end{CJK*}}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{研究背景与意义}\end{CJK*}}
+\input{article/introduction1}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{研究内容}\end{CJK*}}
+\input{article/introduction2}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{文章结构}\end{CJK*}}
+\input{article/introduction3}
+{\begin{CJK*}{UTF8}{zhhei}\zihao{5}\vskip 1mm\section{相关技术与方法基础}\end{CJK*}}
+{\begin{CJK*}{UTF8}{zhhei}\subsection{Text2SQL模型原理}\end{CJK*}}
+\input{article/fundamental/text2sql}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{SQL验证}\end{CJK*}}
+\input{article/fundamental/sql_correct}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{SQL查询流程与执行原理}\end{CJK*}}
+\input{article/fundamental/sql_query_execucate}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{SQL查询流程与查询结果可视化方法}\end{CJK*}}
+\input{article/fundamental/sql_visulization}
+{\begin{CJK*}{UTF8}{zhhei}\zihao{5}\vskip 1mm\section{数据库关系模式设计}\end{CJK*}}
+\begin{CJK*}{UTF8}{song}
+
+\input{article/DB design}
+
+\end{CJK*}
+{\begin{CJK*}{UTF8}{zhhei}\zihao{5}\vskip 1mm\section{系统设计}\end{CJK*}}
+\begin{CJK*}{UTF8}{song}
+
+
+\end{CJK*}
+{\begin{CJK*}{UTF8}{zhhei}\subsection{系统架构设计}\end{CJK*}}
+\input{article/design/system_structure}
+{\begin{CJK*}{UTF8}{zhhei}\vskip 1mm\subsection{功能模块设计}\end{CJK*}}
+
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{数据库初始化}\end{CJK*}}
+\input{article/design/initial}
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{SQL正确性检查与建议}\end{CJK*}}
+\input{article/design/check_device}
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{Text2SQL自然语言查询}\end{CJK*}}
+\input{article/design/NLP_query}
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{SQL查询流程与结果可视化}\end{CJK*}}
+\input{article/design/visulization}
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{系统重置功能}\end{CJK*}}
+\input{article/design/reset}
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{模块连接}\end{CJK*}}
+\input{article/design/module_connection}
+{\begin{CJK*}{UTF8}{zhhei}\subsubsection{CLI命令}\end{CJK*}}
+\input{article/design/cli}
+{\begin{CJK*}{UTF8}{zhhei}\zihao{5}\vskip 1mm\section{功能测试与效果展示}\end{CJK*}}
+\input{article/presentation/pre}
+{\begin{CJK*}{UTF8}{zhhei}\zihao{5}\vskip 1mm\section{结论与展望}\end{CJK*}}
+\input{article/conclusion}
+
+    
+{\zihao{5}
+\begin{CJK*}{UTF8}{zhhei}参~考~文~献\end{CJK*}}
+\begin{thebibliography}{99}
+\zihao{5-} \addtolength{\itemsep}{-1em}
+\vspace {1.5mm}
+
+\bibitem[1]{1}\begin{CJK*}{UTF8}{song}侯博学，陈林 . 数据库技术发展研究综述［J］. 软件导刊，\end{CJK*}
+2024，23（6）：214-220.
+\bibitem[2]{2} \begin{CJK*}{UTF8}{song}宋庆江 . 数据库基础［M］. 西安：西安电子科技大学\end{CJK*}
+出版社，2023.
+\bibitem[3]{3} Katsogiannis-Meimarakis G, Koutrika G. A survey on deep learning approaches for text-to-SQL[J]. The VLDB Journal, 2023, 32(4): 905-936.
+
+
+\end{thebibliography}
+
+
+
+
+
+\end{document}
