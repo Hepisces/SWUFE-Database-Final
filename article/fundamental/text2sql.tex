@@ -1,5 +1,5 @@
 \begin{CJK*}{UTF8}{song}
 
-Text2SQL 技术旨在将自然语言查询转化为 SQL 语句，以高效访问关系型数据库。传统方法依赖深度学习和预训练模型，但在语义理解、复杂查询及跨域泛化上存在局限性~\cite{3}。2023 年后，大语言模型（LLM）驱动的方法占据主流，分为四类：Prompt、Fine-tuning、Agent 和混合方法。本文所使用的Text2sql模型为在huggingface开源的sqlcoder-7b模型 \footnote{https://huggingface.co/defog/sqlcoder-7b-2}。该模型在CodeLlama-7B上微调得到，并通过SQL\_Eval进行测试和调整性能，并在date，group\_by，order\_by, ratio, join, where六个类别的生成任务上达到了平均超过90\%的准确率。在使用时，通过传入自然语言查询和目标数据库的关系模式，模型即可返回对应的查询语句。
+Text2SQL 技术旨在将自然语言查询转化为 SQL 语句，以高效访问关系型数据库。传统方法依赖深度学习和预训练模型，但在语义理解、复杂查询及跨域泛化上存在局限性~\cite{3}。2023 年后，大语言模型（LLM）驱动的方法占据主流，分为四类：Prompt、Fine-tuning、Agent 和混合方法~\cite{7,8,9}。本文所使用的Text2sql模型为在huggingface开源的sqlcoder-7b模型 \footnote{https://huggingface.co/defog/sqlcoder-7b-2}。该模型在CodeLlama-7B~\cite{10}上微调得到，并通过SQL\_Eval进行测试和调整性能，并在date，group\_by，order\_by, ratio, join, where六个类别的生成任务上达到了平均超过90\%的准确率。在使用时，通过传入自然语言查询和目标数据库的关系模式，模型即可返回对应的查询语句。
 
 \end{CJK*}
